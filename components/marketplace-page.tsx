@@ -1,16 +1,108 @@
 'use client'
 
+// import React, { useState } from 'react'
+// import { Button } from "@/components/ui/button"
+// import { Input } from "@/components/ui/input"
+// import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+// import { Badge } from "@/components/ui/badge"
+// import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+// import { Search, User, Share2 } from 'lucide-react'
+// import { Header } from "@/components/header"  // Import the shared Header component
+// import Image from 'next/image'
+
+
+// const categories = [
+//   { name: 'Textbooks', icon: '📚' },
+//   { name: 'Electronics', icon: '💻' },
+//   { name: 'Furniture', icon: '🪑' },
+//   { name: 'Clothing', icon: '👕' },
+//   { name: 'Bikes', icon: '🚲' },
+//   { name: 'Sports', icon: '⚽' },
+//   { name: 'Music', icon: '🎸' },
+//   { name: 'Art', icon: '🎨' },
+//   { name: 'Tickets', icon: '🎟️' },
+//   { name: 'Free Stuff', icon: '🆓' },
+// ]
+
+// const listings = [
+//   { id: 1, title: "Calculus Textbook (8th Edition)", price: 45, seller: "Alice Smith", image: "/placeholder.svg?height=200&width=300&text=Calculus+Textbook", status: "Like New" },
+//   { id: 2, title: "Dorm Room Mini Fridge", price: 80, seller: "Bob Johnson", image: "/placeholder.svg?height=200&width=300&text=Mini+Fridge", status: "Good Condition" },
+//   { id: 3, title: "MacBook Pro (2019)", price: 800, seller: "Charlie Brown", image: "/placeholder.svg?height=200&width=300&text=MacBook+Pro", status: "Refurbished" },
+//   { id: 4, title: "Chemistry Lab Coat", price: 15, seller: "Diana Prince", image: "/placeholder.svg?height=200&width=300&text=Lab+Coat", status: "New" },
+//   { id: 5, title: "Desk Lamp", price: 20, seller: "Ethan Hunt", image: "/placeholder.svg?height=200&width=300&text=Desk+Lamp", status: "Used" },
+//   { id: 6, title: "Acoustic Guitar", price: 150, seller: "Fiona Apple", image: "/placeholder.svg?height=200&width=300&text=Acoustic+Guitar", status: "Like New" },
+// ]
+
+// export function MarketplacePageComponent() {
+//   const [searchQuery, setSearchQuery] = useState("")
+
+//   return (
+//     <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
+//       <Header />  {/* Use the shared Header component */}
+
+//       <main className="flex-grow container mx-auto px-4 py-8">
+//         <div className="mb-8">
+//           <Input
+//             type="search"
+//             placeholder="Search marketplace..."
+//             className="w-full max-w-xl pl-10 border-gray-300 focus:border-gray-500 focus:ring-gray-500"
+//             value={searchQuery}
+//             onChange={(e) => setSearchQuery(e.target.value)}
+//           />
+//           <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+//         </div>
+
+//         <ScrollArea className="w-full whitespace-nowrap rounded-md border">
+//           <div className="flex w-max space-x-4 p-4">
+//             {categories.map((category) => (
+//               <Button key={category.name} variant="outline" className="flex-shrink-0">
+//                 <span className="mr-2">{category.icon}</span>
+//                 {category.name}
+//               </Button>
+//             ))}
+//           </div>
+//           <ScrollBar orientation="horizontal" />
+//         </ScrollArea>
+
+//         <h2 className="text-2xl font-semibold mt-8 mb-4">Featured Listings</h2>
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+//           {listings.map((listing) => (
+//             <Card key={listing.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+//               <CardHeader className="p-0">
+//                 <Image src={item.image} alt={item.title} width={150} height={150} className="w-full h-32 object-cover" />
+//               </CardHeader>
+//               <CardContent className="p-4">
+//                 <CardTitle className="text-lg font-semibold mb-2">{listing.title}</CardTitle>
+//                 <div className="flex justify-between items-center mb-2">
+//                   <span className="font-bold text-lg">${listing.price}</span>
+//                   <Badge variant="secondary">{listing.status}</Badge>
+//                 </div>
+//                 <div className="flex items-center text-sm text-gray-500">
+//                   <User className="w-4 h-4 mr-1" />
+//                   <span>{listing.seller}</span>
+//                 </div>
+//               </CardContent>
+//               <CardFooter className="bg-gray-50 p-4 flex justify-between items-center">
+//                 <Button variant="default" className="bg-green-600 hover:bg-green-700 text-white">
+//                   Message Seller
+//                 </Button>
+//                 <Button variant="ghost" size="icon">
+//                   <Share2 className="w-5 h-5" />
+//                 </Button>
+//               </CardFooter>
+//             </Card>
+//           ))}
+//         </div>
+//       </main>
 import React, { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Search, User, Share2 } from 'lucide-react'
-import { Header } from "@/components/header"  // Import the shared Header component
+import { Header } from "@/components/header"
 import Image from 'next/image'
-
 
 const categories = [
   { name: 'Textbooks', icon: '📚' },
@@ -39,10 +131,10 @@ export function MarketplacePageComponent() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
-      <Header />  {/* Use the shared Header component */}
+      <Header />
 
       <main className="flex-grow container mx-auto px-4 py-8">
-        <div className="mb-8">
+        <div className="mb-8 relative">
           <Input
             type="search"
             placeholder="Search marketplace..."
@@ -70,7 +162,7 @@ export function MarketplacePageComponent() {
           {listings.map((listing) => (
             <Card key={listing.id} className="overflow-hidden hover:shadow-lg transition-shadow">
               <CardHeader className="p-0">
-                <Image src={item.image} alt={item.title} width={150} height={150} className="w-full h-32 object-cover" />
+                <Image src={listing.image} alt={listing.title} width={300} height={200} className="w-full h-32 object-cover" />
               </CardHeader>
               <CardContent className="p-4">
                 <CardTitle className="text-lg font-semibold mb-2">{listing.title}</CardTitle>
@@ -95,7 +187,6 @@ export function MarketplacePageComponent() {
           ))}
         </div>
       </main>
-
       <footer className="border-t border-gray-200 py-8 px-6 mt-12 bg-gray-50">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>

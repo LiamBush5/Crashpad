@@ -281,15 +281,31 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
-import { Switch } from "@/components/ui/switch"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Search, Bell, MessageSquare, User, Home, ShoppingBag, PlusCircle, BedDouble, Bath, Wifi, Car, Dog, Coffee, Zap, MapPin, Clock, Calendar } from 'lucide-react'
+import { BedDouble, Bath, Wifi, Car, Zap, MapPin, Clock, Calendar } from 'lucide-react'
 import { Header } from "@/components/header"
+
+
+interface Listing {
+  id: number;
+  title: string;
+  price: number;
+  bedrooms: number;
+  bathrooms: number;
+  type: string;
+  leaseType: string;
+  distanceFromCampus: number;
+  availableFrom: string;
+  amenities: string[];
+  image: string;
+  location: {
+    lat: number;
+    lng: number;
+  };
+}
 
 export function HousingPageComponent() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -299,7 +315,7 @@ export function HousingPageComponent() {
   const [showFilters, setShowFilters] = useState(false)
   const [sortBy, setSortBy] = useState("price-low")
 
-  const housingListings = [
+  const housingListings: Listing[] = [
     { id: 1, title: "Cozy Studio Near Campus", price: 800, bedrooms: 0, bathrooms: 1, type: "Apartment", leaseType: "Lease", distanceFromCampus: 0.5, availableFrom: "2023-09-01", amenities: ["wifi", "laundry"], image: "/placeholder.svg?height=200&width=300&text=Cozy+Studio", location: { lat: 40.7128, lng: -74.0060 } },
     { id: 2, title: "Shared 2BR Apartment", price: 600, bedrooms: 2, bathrooms: 1, type: "Apartment", leaseType: "Sublet", distanceFromCampus: 1.2, availableFrom: "2023-08-15", amenities: ["wifi", "parking", "gym"], image: "/placeholder.svg?height=200&width=300&text=Shared+2BR", location: { lat: 40.7282, lng: -73.9942 } },
     { id: 3, title: "Spacious 3BR House", price: 1800, bedrooms: 3, bathrooms: 2, type: "House", leaseType: "Lease", distanceFromCampus: 2.0, availableFrom: "2023-09-01", amenities: ["wifi", "parking", "backyard", "laundry"], image: "/placeholder.svg?height=200&width=300&text=Spacious+3BR", location: { lat: 40.7300, lng: -74.0100 } },
@@ -321,7 +337,7 @@ export function HousingPageComponent() {
     return 0
   })
 
-  const ListingDialog = ({ listing }) => (
+  const ListingDialog = ({ listing }: { listing: Listing }) => (
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="ghost" className="w-full text-left">View Details</Button>
@@ -494,7 +510,6 @@ export function HousingPageComponent() {
                     </div>
                     <ListingDialog listing={listing} />
                   </CardContent>
-
                 </Card>
               ))}
             </div>
