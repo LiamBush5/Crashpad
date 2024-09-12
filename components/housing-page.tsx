@@ -2,19 +2,16 @@
 
 import React, { useState } from 'react'
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
-import { Switch } from "@/components/ui/switch"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Search, Bell, MessageSquare, User, Home, ShoppingBag, PlusCircle, BedDouble, Bath, Wifi, Car, Dog, Coffee, Zap, MapPin, Clock, Calendar } from 'lucide-react'
-import { Header } from "@/components/header"  // Import the Header component
+import { BedDouble, Bath, Wifi, Car, Zap, MapPin, Clock, Calendar } from 'lucide-react'
+import { Header } from "@/components/header"
+import Image from 'next/image'
 
 export function HousingPageComponent() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -63,7 +60,7 @@ export function HousingPageComponent() {
           <DialogDescription>${listing.price}/month</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <img src={listing.image} alt={listing.title} className="w-full h-48 object-cover rounded-lg" />
+          <Image src={listing.image} alt={listing.title} width={300} height={200} className="w-full h-48 object-cover" />
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center">
               <BedDouble className="w-4 h-4 mr-2" />

@@ -6,6 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Home, ShoppingBag, User, BedDouble, Bath } from 'lucide-react'
 import { Header } from "@/components/header"
+import Image from 'next/image';
+
 
 export function Homepage() {
   const features = [
@@ -60,7 +62,7 @@ export function Homepage() {
                 <div className="flex animate-scroll-rtl">
                   {[...housingListings, ...housingListings].map((listing, index) => (
                     <Card key={index} className="flex-shrink-0 w-64 mr-4 overflow-hidden border-gray-200">
-                      <img src={listing.image} alt={listing.title} className="w-full h-40 object-cover" />
+                      <Image src={listing.image} alt={listing.title} width={300} height={200} className="w-full h-40 object-cover" />
                       <CardContent className="p-4">
                         <h4 className="font-semibold text-lg mb-2 truncate">{listing.title}</h4>
                         <p className="font-bold text-lg text-gray-900">${listing.price}/month</p>
@@ -84,7 +86,7 @@ export function Homepage() {
                 <div className="flex animate-scroll-ltr">
                   {[...marketplaceItems, ...marketplaceItems].map((item, index) => (
                     <Card key={index} className="flex-shrink-0 w-48 mr-4 overflow-hidden border-gray-200">
-                      <img src={item.image} alt={item.title} className="w-full h-32 object-cover" />
+                      <Image src={item.image} alt={item.title} width={150} height={150} className="w-full h-32 object-cover" />
                       <CardContent className="p-4">
                         <h4 className="font-semibold text-lg mb-2 truncate">{item.title}</h4>
                         <p className="font-bold text-lg text-gray-900">${item.price}</p>
@@ -120,7 +122,7 @@ export function Homepage() {
 
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center">What Our Users Say</h2>
+            <h2 className="text-3xl font-b mb-12 text-center">What Our Users Say</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
                 <Card key={index} className="border-gray-200">
